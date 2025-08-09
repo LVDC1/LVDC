@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LV DRIP CARTEL - Product Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Product Detail Black Text Styles */
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .product-image-section .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-info-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-detail-name {
+            color: black !important;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .product-detail-price {
+            color: #00ff88 !important;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .product-description h3,
+        .product-specifications h3 {
+            color: black !important;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .product-description p {
+            color: black !important;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .spec-list {
+            margin-bottom: 2rem;
+        }
+        
+        .spec-item {
+            color: black !important;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .spec-item strong {
+            color: black !important;
+        }
+        
+        .spec-item span {
+            color: black !important;
+        }
+        
+        .in-stock {
+            color: #00ff88 !important;
+            font-weight: 600;
+        }
+        
+        .quantity-section label {
+            color: black !important;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
+            background: white;
+            color: black;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .quantity-btn:hover {
+            border-color: #00ff88;
+            background: #f0f0f0;
+        }
+        
+        .quantity-display {
+            color: black !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+        }
+        
+        .add-to-cart-btn {
+            background: #00ff88;
+            color: black;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #00cc6a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+        }
+        
+        .buy-instagram-btn {
+            background: #8B5CF6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+        
+        .buy-instagram-btn:hover {
+            background: #7C3AED;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        
+        .buy-now-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .buy-now-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
+            }
+            
+            .product-detail-name {
+                font-size: 2rem;
+            }
+            
+            .product-detail-price {
+                font-size: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+        .product-gallery-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .gallery-arrow {
+            background: rgba(255,255,255,0.8);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: background 0.2s;
+        }
+        .gallery-arrow.left { left: 10px; }
+        .gallery-arrow.right { right: 10px; }
+        .gallery-arrow:hover { background: #00ff88; color: #fff; }
+        .product-gallery-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .gallery-image {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 12px;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+        .gallery-image.fade-out {
+            opacity: 0;
+        }
+        .gallery-image.fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar">
+        <div class="loading-progress"></div>
+    </div>
+
+    <!-- Animated background -->
+    <div class="background-animation"></div>
+    
+    <!-- Sticky Header -->
+    <header class="header">
+        <div class="brand-logo">
+            <span class="logo-text">LVDC</span>
+        </div>
+        <div class="header-right">
+            <a href="products.html" class="back-button" id="backButton">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Back</span>
+            </a>
+            <div class="menu-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sliding Menu -->
+    <div class="sliding-menu" id="slidingMenu">
+        <div class="menu-header">
+            <h3>Menu</h3>
+            <button class="menu-close" id="menuClose">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="menu-content">
+            <div class="menu-item">
+                <span id="menuHome">Home</span>
+            </div>
+            <div class="menu-item">
+                <span>Products</span>
+            </div>
+            <div class="menu-item">
+                <span>About</span>
+            </div>
+            <div class="menu-item">
+                <span>Contact</span>
+            </div>
+            <div id="telegramHandleMenu" style="display:none; text-align:center; margin: 10px 0 0 0; font-size: 1em; color: #0088cc;"></div>
+        </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="products-section">
+            <h1 class="products-title">Product Details</h1>
+            
+            <!-- Product Detail Grid -->
+            <div class="product-detail-grid">
+                <!-- Product Image -->
+                <div class="product-image-section">
+                    <div class="product-card">
+                        <div class="product-gallery-wrapper">
+                            <button class="gallery-arrow left" id="galleryPrev" aria-label="Previous image">&#8592;</button>
+                            <div class="product-gallery-image-container">
+                                <img id="galleryImage" class="product-image gallery-image" src="images/nike-dunk-low-sb-1.jpg" alt="Nike Dunk Low SB" onerror="this.onerror=null;this.src='images/placeholder.jpg';this.alt='Image not available';" />
+                            </div>
+                            <button class="gallery-arrow right" id="galleryNext" aria-label="Next image">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info-section">
+                    <div class="product-header">
+                        <h2 id="productName" class="product-detail-name">Product Name</h2>
+                        <p id="productPrice" class="product-detail-price">$0.00</p>
+                    </div>
+
+                    <div class="product-description">
+                        
+                    </div>
+
+                    <div class="product-specifications">
+                        <h3>Specifications</h3>
+                        <div class="spec-list">
+                            <div class="spec-item">
+                                <strong>Brand:</strong> <span id="productBrand">LV DRIP CARTEL</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Availability:</strong> <span id="productAvailability" class="in-stock">In Stock</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Shipping:</strong> <span>€0–€5 (depending on your location)</span>
+                            </div>
+                            <div class="spec-item" id="sizeSpec" style="display: none;">
+                                <strong>Size:</strong> <span>S-XXL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="purchase-section">
+                        <div class="action-buttons">
+                            <a href="https://t.me/LVDCshop" target="_blank" class="add-to-cart-btn" id="addToCartBtn">Buy in Telegram</a>
+                            <a href="https://www.instagram.com/lv.dripcartel?igsh=N3NleG5va3pmb214" target="_blank" class="buy-instagram-btn" id="buyInstagramBtn">Buy in Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Product detail page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Product Image Gallery Functionality
+            // Determine productId from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            let galleryImages = [];
+            let defaultProductName = '';
+            if (productId === '2') {
+                galleryImages = [
+                    'images/air-jordan-4-travis-1.jpg',
+                    'images/air-jordan-4-travis-2.jpg',
+                    'images/air-jordan-4-travis-3.jpg'
+                ];
+                defaultProductName = 'Air Jordan 4 Retro x Travis Scott';
+            } else if (productId === '3') {
+                galleryImages = [
+                    'images/air-jordan-3-1.jpg',
+                    'images/air-jordan-3-2.jpg',
+                    'images/air-jordan-3-3.jpg',
+                    'images/air-jordan-3-4.jpg'
+                ];
+                defaultProductName = 'Nike Air Jordan 3';
+            } else if (productId === '4') {
+                galleryImages = [
+                    'images/nike-elite-backpack-1.jpg',
+                    'images/nike-elite-backpack-2.jpg',
+                    'images/nike-elite-backpack-3.jpg',
+                    'images/nike-elite-backpack-4.jpg'
+                ];
+                defaultProductName = 'Nike Elite Backpack';
+            } else if (productId === '5') {
+                galleryImages = [
+                    'images/airpods-max-1.jpg',
+                    'images/airpods-max-2.jpg',
+                    'images/airpods-max-3.jpg',
+                    'images/airpods-max-4.jpg'
+                ];
+                defaultProductName = 'Apple AirPods Max';
+            } else if (productId === '6') {
+                galleryImages = [
+                    'images/nike-tech-fleece-1.jpg',
+                    'images/nike-tech-fleece-2.jpg',
+                    'images/nike-tech-fleece-3.jpg',
+                    'images/nike-tech-fleece-4.jpg'
+                ];
+                defaultProductName = 'Nike Tech Fleece Sets';
+            } else if (productId === '7') {
+                galleryImages = [
+                    'images/north-face-jacket-1.jpg',
+                    'images/north-face-jacket-2.png',
+                    'images/north-face-jacket-3.png',
+                    'images/north-face-jacket-4.png'
+                ];
+                defaultProductName = 'The North Face Jacket';
+            } else if (productId === '8') {
+                galleryImages = [
+                    'images/ralph-lauren-polo-1.jpg',
+                    'images/ralph-lauren-polo-2.jpg',
+                    'images/ralph-lauren-polo-3.jpg',
+                    'images/ralph-lauren-polo-4.jpg'
+                ];
+                defaultProductName = 'Ralph Lauren POLO';
+            } else {
+                galleryImages = [
+                    'images/nike-dunk-low-sb-1.jpg',
+                    'images/nike-dunk-low-sb-2.jpg',
+                    'images/nike-dunk-low-sb-3.jpg',
+                    'images/nike-dunk-low-sb-4.jpg'
+                ];
+                defaultProductName = 'Nike Dunks Low SB';
+            }
+            let currentGalleryIndex = 0;
+            const galleryImage = document.getElementById('galleryImage');
+            const prevBtn = document.getElementById('galleryPrev');
+            const nextBtn = document.getElementById('galleryNext');
+
+            function showGalleryImage(index) {
+                galleryImage.classList.add('fade-out');
+                setTimeout(() => {
+                    galleryImage.src = galleryImages[index];
+                    galleryImage.classList.remove('fade-out');
+                    galleryImage.classList.add('fade-in');
+                    setTimeout(() => galleryImage.classList.remove('fade-in'), 500);
+                }, 300);
+            }
+
+            if (prevBtn && nextBtn && galleryImage) {
+                prevBtn.addEventListener('click', function() {
+                    currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+                    showGalleryImage(currentGalleryIndex);
+                });
+                nextBtn.addEventListener('click', function() {
+                    currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+                    showGalleryImage(currentGalleryIndex);
+                });
+            }
+
+            // Set initial image
+            if (galleryImage) {
+                galleryImage.src = galleryImages[0];
+            }
+            // Set default product name if not set by URL
+            const productNameElem = document.getElementById('productName');
+            if (productNameElem && (!productNameElem.textContent || productNameElem.textContent === 'Product Name')) {
+                productNameElem.textContent = defaultProductName;
+            }
+            
+            // --- Available Colors Specification Logic ---
+            const specList = document.querySelector('.spec-list');
+            if (specList && productId) {
+                // IDs for The North Face Jacket and Nike Elite Backpack
+                const tenColorIds = ['4', '7'];
+                // ID for Apple AirPods Max
+                const sevenColorIds = ['5'];
+                let colorCount = '20+';
+                if (tenColorIds.includes(productId)) {
+                    colorCount = '10+';
+                } else if (sevenColorIds.includes(productId)) {
+                    colorCount = '7+';
+                }
+                // Create the spec item
+                const colorSpecDiv = document.createElement('div');
+                colorSpecDiv.className = 'spec-item';
+                colorSpecDiv.innerHTML = '<strong>Available colors:</strong> <span>' + colorCount + '</span>';
+                // Insert after Availability (second .spec-item)
+                const availabilityItem = specList.querySelectorAll('.spec-item')[1];
+                if (availabilityItem && availabilityItem.nextSibling) {
+                    specList.insertBefore(colorSpecDiv, availabilityItem.nextSibling);
+                } else {
+                    specList.appendChild(colorSpecDiv);
+                }
+            }
+            // --- Delivery Time Specification Logic ---
+            if (specList) {
+                // Prevent duplicate insertion
+                if (!specList.querySelector('.delivery-time-spec')) {
+                    const deliverySpecDiv = document.createElement('div');
+                    deliverySpecDiv.className = 'spec-item delivery-time-spec';
+                    deliverySpecDiv.innerHTML = '<strong>Delivery time:</strong> <span>10–20 business days</span>';
+                    // Insert after Shipping (third .spec-item)
+                    const shippingItem = specList.querySelectorAll('.spec-item')[2];
+                    if (shippingItem && shippingItem.nextSibling) {
+                        specList.insertBefore(deliverySpecDiv, shippingItem.nextSibling);
+                    } else {
+                        specList.appendChild(deliverySpecDiv);
+                    }
+                }
+            }
+            // --- End Delivery Time Specification Logic ---
+            
+            // Set brand based on product ID
+            const brandElement = document.getElementById('productBrand');
+            if (brandElement) {
+                const brands = {
+                    '1': 'Nike',
+                    '2': 'Nike', 
+                    '3': 'Nike',
+                    '4': 'Nike',
+                    '5': 'Apple',
+                    '6': 'Nike',
+                    '7': 'The North Face',
+                    '8': 'Ralph Lauren'
+                };
+                const brand = brands[productId] || 'LV DRIP CARTEL';
+                brandElement.textContent = brand;
+            }
+            
+            // Show size for specific products
+            const sizeSpec = document.getElementById('sizeSpec');
+            if (sizeSpec) {
+                if (productId === '1') {
+                    sizeSpec.style.display = 'block';
+                    sizeSpec.querySelector('span').textContent = '36-44';
+                } else if (productId === '2') {
+                    sizeSpec.style.display = 'block';
+                    sizeSpec.querySelector('span').textContent = '36-46';
+                } else if (productId === '3') {
+                    sizeSpec.style.display = 'block';
+                    sizeSpec.querySelector('span').textContent = '36-46';
+                } else if (productId === '6' || productId === '7' || productId === '8') {
+                    sizeSpec.style.display = 'block';
+                    sizeSpec.querySelector('span').textContent = 'S-XXL';
+                } else {
+                    sizeSpec.style.display = 'none';
+                }
+            }
+            
+            // Load product details and additional info
+            loadProductDetails();
+            loadAdditionalProductInfo(productId);
+        });
+
+        let currentQuantity = 1;
+
+        function loadProductDetails() {
+            // Get product data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productName = urlParams.get('name');
+            // Set prices in euros for each product
+            const prices = {
+                '1': '59.00€',
+                '2': '130.00€',
+                '3': '85.00€',
+                '4': '59.99€',
+                '5': '89.99€',
+                '6': '119.99€',
+                '7': '79.00€',
+                '8': '55.99€'
+            };
+            const productPrice = prices[productId] || '';
+            const productImage = urlParams.get('image');
+
+            if (productId && productName && productImage) {
+                // Populate the page with product data
+                document.getElementById('productName').textContent = decodeURIComponent(productName);
+                document.getElementById('productPrice').textContent = productPrice;
+                document.getElementById('mainProductImage').src = decodeURIComponent(productImage);
+                document.getElementById('mainProductImage').alt = decodeURIComponent(productName);
+                // Set page title
+                document.title = `LV DRIP CARTEL - ${decodeURIComponent(productName)}`;
+                // Load additional product details based on product ID
+                loadAdditionalProductInfo(productId);
+                // Add entrance animations
+                setTimeout(() => {
+                    document.querySelector('.product-showcase').classList.add('animate-in');
+                }, 100);
+            } else {
+                // Redirect back to products page if no valid product data
+                window.location.href = 'products.html';
+            }
+        }
+
+        function loadAdditionalProductInfo(productId) {
+            const descriptions = {
+                '1': 'Premium sneakers designed for ultimate comfort and style. Features advanced cushioning technology and durable construction.',
+                '2': 'Premium quality Air Jordan 4 Retro x Travis Scott collaboration. Features advanced cushioning technology and durable construction. Price: €100-130 (depending on your shoe size). Shipping: €0–€5 (depending on your location). Delivery time: 10-20 business days. Available sizes (EU): 36–46.',
+                '3': 'Classic cap with embroidered logo. Adjustable fit with premium materials and timeless design.',
+                '4': 'Premium socks crafted from high-quality materials for maximum comfort and durability.',
+                '5': 'Stylish backpack with multiple compartments and ergonomic design. Perfect for daily use.',
+                '6': 'Limited edition tee with exclusive design. Made from premium cotton for superior comfort.',
+                '7': 'Luxury belt crafted from genuine leather with premium hardware and timeless design.',
+                '8': 'Mystery box containing exclusive items. Surprise yourself with premium LV DRIP CARTEL products.'
+            };
+            
+            const brands = {
+                '1': 'Nike',
+                '2': 'Nike', 
+                '3': 'Nike',
+                '4': 'Nike',
+                '5': 'Apple',
+                '6': 'Nike',
+                '7': 'The North Face',
+                '8': 'Ralph Lauren'
+            };
+            
+            const materials = {
+                '1': 'Premium Leather & Mesh',
+                '2': 'Premium Cotton Blend',
+                '3': 'Premium Cotton Twill',
+                '4': 'Premium Cotton Blend',
+                '5': 'Durable Nylon',
+                '6': 'Premium Cotton',
+                '7': 'Genuine Leather',
+                '8': 'Various Premium Materials'
+            };
+
+            // Set description
+            const description = descriptions[productId] || '';
+            const descriptionElement = document.getElementById('productDescription');
+            if (descriptionElement) {
+                descriptionElement.textContent = description;
+            }
+            
+            // Set brand
+            const brand = brands[productId] || 'LV DRIP CARTEL';
+            const brandElement = document.getElementById('productBrand');
+            if (brandElement) {
+                brandElement.textContent = brand;
+            }
+            
+            // Set material
+            const material = materials[productId] || '';
+            const materialElement = document.getElementById('productMaterial');
+            if (materialElement) {
+                materialElement.textContent = material;
+            }
+        }
+        
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            // Hide and remove notification
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
